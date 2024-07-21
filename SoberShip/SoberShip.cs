@@ -21,7 +21,7 @@ namespace SoberShip
 
             ConfigOptions.Init(Config);
 
-            Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
+            Logger.LogInfo($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
         }
 
         internal static void Patch()
