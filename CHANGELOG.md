@@ -1,8 +1,11 @@
+## v1.2.2
+* Added the option to set the maximum amount of Vain Shrouds that can exist (defaults to false)
+
 ## v1.2.1
 * Fixed an issue where the level would never start if a non-host had the mod installed and vain shrouds tried to spawn.
 * Removed the setting "RemoveRemaining" as the setting it depended on does the same thing.
 
-## v1.2
+## v1.2.0
 * SoberShip now relocates the starting position of Vain Shrouds
 * Added more config options
   * Option to Disable Vain Shrouds Completely (defaults to false)
@@ -15,5 +18,5 @@
     * Whether the module is enabled (defaults to true)
     * The minimum distance the Vain Shroud starting position is allowed to be (defaults to 35)
 
-## v1.1
+## v1.1.0
 * Now removes newly generated Vain Shrouds as well.

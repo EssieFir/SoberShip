@@ -13,6 +13,10 @@ namespace SoberShip.Config
         //Disable Vain Shrouds Settings
         public static ConfigEntry<bool> DisableVainShroudsCompletely;
 
+        //Maximum Vain Shrouds Settings
+        public static ConfigEntry<bool> RemoveExcessiveVainShrouds;
+        public static ConfigEntry<int> MaximumVainShrouds;
+
         //Vain Shroud Removal Settings
         public static ConfigEntry<bool> RemoveNearbyVainShrouds;
         public static ConfigEntry<float> MinimumVainShroudDistanceFromShip;
@@ -34,7 +38,11 @@ namespace SoberShip.Config
             VainShroudRemovalMethod = config.Bind<RemovalMethod>(category, "RemovalMethod", RemovalMethod.DELETION, "The method used to remove Vain Shrouds that are near the ship.");
 
             category = "Disable Vain Shrouds";
-            DisableVainShroudsCompletely = config.Bind<bool>(category, "DisableCompletely", false, "Whether to just disable the spawning of Vain Shrouds entirely. (Enabling this disables the \"Relocation\" & \"Removal\" feature)");
+            DisableVainShroudsCompletely = config.Bind<bool>(category, "DisableCompletely", false, "Makes the mod just disable the spawning of Vain Shrouds entirely.");
+
+            category = "Vain Shroud Limiter";
+            RemoveExcessiveVainShrouds = config.Bind<bool>(category, "CapVainShrouds", false, "Makes the mod cap the amount of Vain Shrouds that are allowed to be generated.");
+            MaximumVainShrouds = config.Bind<int>(category, "MaximumVainShrouds", 200, "The maximum amount of Vain Shrouds that are allowed to be generated. (The game already has a maximum implemented, though I believe the maximum that could spawn is around 600 to 625)");
         }
     }
 }

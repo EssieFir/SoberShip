@@ -18,7 +18,7 @@ namespace SoberShip.Patches
                 return;
             }
 
-            if (ConfigOptions.DisableVainShroudsCompletely.Value)
+            if (ConfigOptions.DisableVainShroudsCompletely.Value || (ConfigOptions.RemoveExcessiveVainShrouds.Value && ConfigOptions.MaximumVainShrouds.Value <= 0))
             {
                 moldIterations = 0;
                 moldStartPosition = -1;
@@ -41,8 +41,8 @@ namespace SoberShip.Patches
                 int newPosition = random.Next(i, __instance.outsideAINodes.Length);
                 while (Vector3.Distance(__instance.outsideAINodes[newPosition].transform.position, shipPos) < minDistance)
                 {
-                    if (i + 1 > __instance.outsideAINodes.Length - 1) break;
                     newPosition = random.Next(++i, __instance.outsideAINodes.Length);
+                    if (i >= __instance.outsideAINodes.Length) break;
                 }
 
                 if (Vector3.Distance(__instance.outsideAINodes[newPosition].transform.position, shipPos) >= minDistance)
