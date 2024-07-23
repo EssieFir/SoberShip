@@ -12,7 +12,6 @@ namespace SoberShip.Config
 
         //Disable Vain Shrouds Settings
         public static ConfigEntry<bool> DisableVainShroudsCompletely;
-        public static ConfigEntry<bool> RemoveExistingVainShrouds;
 
         //Vain Shroud Removal Settings
         public static ConfigEntry<bool> RemoveNearbyVainShrouds;
@@ -36,7 +35,6 @@ namespace SoberShip.Config
 
             category = "Disable Vain Shrouds";
             DisableVainShroudsCompletely = config.Bind<bool>(category, "DisableCompletely", false, "Whether to just disable the spawning of Vain Shrouds entirely. (Enabling this disables the \"Relocation\" & \"Removal\" feature)");
-            RemoveExistingVainShrouds = config.Bind<bool>(category, "RemoveRemaining", true, "Removes ALL existing Vain Shrouds if Vain Shrouds are disabled completely. (This setting does nothing if Vain Shrouds aren't disabled.)");
         }
     }
 }

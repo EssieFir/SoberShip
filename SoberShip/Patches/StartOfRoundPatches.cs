@@ -8,6 +8,8 @@ namespace SoberShip.Patches
         [HarmonyPostfix]
         private static void EndOfGamePostFix(StartOfRound __instance)
         {
+            if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame) return;
+
             MoldSpreadManagerPatches.ClearedUnwantedMold = false;
         }
     }

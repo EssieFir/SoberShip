@@ -10,12 +10,19 @@ namespace SoberShip.Patches
         [HarmonyPrefix]
         private static void GenerateNewLevelClientRpcPreFix(RoundManager __instance, ref int moldIterations, ref int moldStartPosition)
         {
-            SoberShip.Logger.LogDebug(string.Format("GenerateNewClientLevelRpcPreFix moldIterations : {0}; moldStartPosition : {1}", moldIterations, moldStartPosition));
+            SoberShip.Logger.LogDebug(string.Format("GenerateNewClientLevelRpcPreFix() moldIterations : {0}; moldStartPosition : {1}", moldIterations, moldStartPosition));
+
+            if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame)
+            {
+                SoberShip.Logger.LogDebug("GenerateNewClientLevelRpcPreFix() called on a non-host client, skipping...");
+                return;
+            }
 
             if (ConfigOptions.DisableVainShroudsCompletely.Value)
             {
                 moldIterations = 0;
                 moldStartPosition = -1;
+                SoberShip.Logger.LogDebug("Vain Shrouds disabled.");
                 return;
             }
 

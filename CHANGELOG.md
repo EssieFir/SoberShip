@@ -1,3 +1,7 @@
+## v1.2.1
+* Fixed an issue where the level would never start if a non-host had the mod installed and vain shrouds tried to spawn.
+* Removed the setting "RemoveRemaining" as the setting it depended on does the same thing.
+
 ## v1.2
 * SoberShip now relocates the starting position of Vain Shrouds
 * Added more config options
