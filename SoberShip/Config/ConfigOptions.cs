@@ -49,8 +49,8 @@ namespace SoberShip.Config
             DisableVainShroudsCompletely = config.Bind<bool>(category, "DisableCompletely", false, "Makes the mod just disable the spawning of Vain Shrouds entirely.\nIn v60, you can turn this on to remove any Vain Shrouds that spawned before the update.");
 
             category = "Vain Shroud Limiter";
-            RemoveExcessiveVainShrouds = config.Bind<bool>(category, "CapVainShrouds", false, "Makes the mod cap the amount of Vain Shrouds that are allowed to be generated.\nThis setting does not currently work correctly.");
-            MaximumVainShrouds = config.Bind<int>(category, "MaximumVainShrouds", 200, "The maximum amount of Vain Shrouds that are allowed to be generated.");
+            RemoveExcessiveVainShrouds = config.Bind<bool>(category, "CapVainShroudIterations", false, "Makes the mod cap the amount of Vain Shrouds iterations that are allowed to be generated.");
+            MaximumVainShrouds = config.Bind<int>(category, "MaximumVainShroudIterations", 20, "The maximum amount of Vain Shroud iterations that are allowed to be generated.");
         }
     }
 }

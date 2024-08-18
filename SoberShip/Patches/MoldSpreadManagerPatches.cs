@@ -33,11 +33,6 @@ namespace SoberShip.Patches
 
             if (StartOfRound.Instance.currentLevel.moldSpreadIterations < 1 || StartOfRound.Instance.currentLevel.moldStartPosition < 0) return;
 
-            if (ConfigOptions.RemoveExcessiveVainShrouds.Value)
-            {
-                DestroyMoldUsingMax(__instance, ConfigOptions.MaximumVainShrouds.Value);
-            }
-
             if (ConfigOptions.RemoveNearbyVainShrouds.Value)
             {
                 switch (ConfigOptions.VainShroudRemovalMethod.Value)
@@ -50,27 +45,6 @@ namespace SoberShip.Patches
                         return;
                 }
             }
-        }
-
-        private static void DestroyMoldUsingMax(MoldSpreadManager __instance, int maximum)
-        {
-            if (ClearedExcessiveMold) return;
-            if (__instance.moldContainer.childCount <= 0) return;
-            if (__instance.moldContainer.childCount <= maximum) return;
-
-            SoberShip.Logger.LogInfo(string.Format("There are over {0} Vain Shrouds! Culling...", maximum));
-
-            int amnt_to_remove = (__instance.moldContainer.childCount - maximum);
-            System.Random rnd_index = new System.Random();
-            for (int i = 0; i < amnt_to_remove; i++)
-            {
-                var mold = __instance.moldContainer.GetChild(rnd_index.Next(0, __instance.moldContainer.childCount - 1)).gameObject;
-                DestroyMold(false, __instance, mold);
-            }
-
-            SoberShip.Logger.LogInfo("Vain Shrouds have been culled.");
-
-            ClearedExcessiveMold = true;
         }
 
         private static void DestroyNearbyMold(MoldSpreadManager __instance, bool permanently = false)

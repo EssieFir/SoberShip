@@ -49,6 +49,12 @@ namespace SoberShip.Patches
             if (!ConfigOptions.RelocateVainShroudSpawnPosition.Value) return;
             if (moldIterations <= 0) return;
 
+            if (ConfigOptions.RemoveExcessiveVainShrouds.Value && moldIterations > ConfigOptions.MaximumVainShrouds.Value)
+            {
+                SoberShip.Logger.LogInfo(string.Format("Capping moldIterations to the specified maximum of {0}", ConfigOptions.MaximumVainShrouds.Value));
+                moldIterations = ConfigOptions.MaximumVainShrouds.Value;
+            }
+
             float minDistance = ConfigOptions.MinimumVainShroudStartDistanceFromShip.Value;
             Vector3 shipPos = StartOfRound.Instance.elevatorTransform.position;
 
