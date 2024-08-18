@@ -61,6 +61,7 @@ namespace SoberShip.Patches
             int range = end - start;
             if (foundIsServerCheck && range < 4 && range > 0)
             {
+                if (codes[end + 1].labels.Count < 0) return instructions;
                 codes[start].opcode = OpCodes.Br_S;
                 codes[start].operand = codes[end + 1].labels[0];
                 codes.RemoveRange(start + 1, range - 1);
