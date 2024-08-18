@@ -41,6 +41,7 @@ namespace SoberShip.Patches
                 if (codes[i].opcode == OpCodes.Ret)
                 {
                     start = i + 1;
+                    SoberShip.Logger.LogDebug(string.Format("SetPlanetsMoldTranspiler() : Start = {0}", start));
 
                     for (int j = start; j < codes.Count; j++)
                     {
@@ -48,6 +49,7 @@ namespace SoberShip.Patches
                         {
                             end = j;
                             foundIsServerCheck = true;
+                            SoberShip.Logger.LogDebug(string.Format("SetPlanetsMoldTranspiler() : End = {0}", end));
                             break;
                         }
                     }

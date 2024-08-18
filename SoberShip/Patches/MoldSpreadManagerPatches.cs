@@ -25,6 +25,7 @@ namespace SoberShip.Patches
             {
                 if (RoundManagerPatches.moldIterations > 0 && RoundManagerPatches.moldStartPosition > 0)
                 {
+                    SoberShip.Logger.LogDebug(string.Format("Loading Vain Shroud state... : iterations = {0}; startPosition = {1}", RoundManagerPatches.moldIterations, RoundManagerPatches.moldStartPosition));
                     StartOfRound.Instance.currentLevel.moldSpreadIterations = RoundManagerPatches.moldIterations;
                     StartOfRound.Instance.currentLevel.moldStartPosition = RoundManagerPatches.moldStartPosition;
                 }

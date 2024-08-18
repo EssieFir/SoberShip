@@ -34,6 +34,7 @@ namespace SoberShip.Patches
             {
                 if (moldIterations > 0 && moldStartPosition > 0)
                 {
+                    SoberShip.Logger.LogDebug(string.Format("Saving Vain Shroud state... : iterations = {0}; startPosition = {1}", moldIterations));
                     RoundManagerPatches.moldIterations = moldIterations;
                     RoundManagerPatches.moldStartPosition = moldStartPosition;
                 }
