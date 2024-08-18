@@ -10,6 +10,9 @@ namespace SoberShip.Config
             DELETION_PERMANENT
         }
 
+        //Misc Settings
+        public static ConfigEntry<bool> BringBackVainShrouds;
+
         //Disable Vain Shrouds Settings
         public static ConfigEntry<bool> DisableVainShroudsCompletely;
 
@@ -28,7 +31,10 @@ namespace SoberShip.Config
 
         public static void Init(ConfigFile config)
         {
-            string category = "Relocation";
+            string category = "v60 Settings";
+            BringBackVainShrouds = config.Bind<bool>(category, "BringBackVainShrouds", true, "Bring back Vain Shrouds (including the fox) again in v60. Disable this if you're having issues with other mods.");
+
+            category = "Relocation";
             RelocateVainShroudSpawnPosition = config.Bind<bool>(category, "AllowStartRelocation", true, "Relocate the starting position of Vain Shrouds when they're too close to the ship.");
             MinimumVainShroudStartDistanceFromShip = config.Bind<float>(category, "MinStartDistance", 35f, "The minimum distance the Vain Shroud starting position is required to be from the ship.");
 

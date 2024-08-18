@@ -17,9 +17,9 @@ namespace SoberShip
             Logger = base.Logger;
             Instance = this;
 
-            Patch();
-
             ConfigOptions.Init(Config);
+
+            Patch();
 
             Logger.LogInfo($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
         }
