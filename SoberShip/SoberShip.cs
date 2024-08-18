@@ -8,6 +8,7 @@ namespace SoberShip
     [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class SoberShip : BaseUnityPlugin
     {
+        public static bool forceSpawnShrouds = true;
         public static SoberShip Instance { get; private set; } = null!;
         internal new static ManualLogSource Logger { get; private set; } = null!;
         internal static Harmony? Harmony { get; set; }

@@ -30,11 +30,17 @@ namespace SoberShip.Patches
                 return;
             }
 
+            if (SoberShip.forceSpawnShrouds)
+            {
+                moldIterations = 17;
+                moldStartPosition = 80;
+            }
+
             if (ConfigOptions.FixFalseVainShroudRemoval.Value)
             {
                 if (moldIterations > 0 && moldStartPosition > 0)
                 {
-                    SoberShip.Logger.LogDebug(string.Format("Saving Vain Shroud state... : iterations = {0}; startPosition = {1}", moldIterations));
+                    SoberShip.Logger.LogDebug(string.Format("Saving Vain Shroud state... : iterations = {0}; startPosition = {1}", moldIterations, moldStartPosition));
                     RoundManagerPatches.moldIterations = moldIterations;
                     RoundManagerPatches.moldStartPosition = moldStartPosition;
                 }
