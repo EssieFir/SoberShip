@@ -16,6 +16,7 @@ namespace SoberShip.Patches
         {
             if (patchSetPlanetsMoldTranspilerSuccess)
             {
+                SoberShip.Logger.LogDebug("SetPlanetsMoldPrefix() called.");
                 if (!ConfigOptions.BringBackVainShrouds.Value) return false;
                 if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame)
                 {
@@ -60,7 +61,8 @@ namespace SoberShip.Patches
             int range = end - start;
             if (foundIsServerCheck && range < 4 && range > 0)
             {
-                codes[start].opcode = OpCodes.Nop;
+                codes[start].opcode = OpCodes.Br_S;
+                codes[start].operand = codes[end + 1].labels[0];
                 codes.RemoveRange(start + 1, range - 1);
                 patchSetPlanetsMoldTranspilerSuccess = true;
             }
