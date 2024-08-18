@@ -34,7 +34,7 @@ namespace SoberShip.Config
         {
             string category = "v60 Settings";
             BringBackVainShrouds = config.Bind<bool>(category, "BringBackVainShrouds", true, "Bring back Vain Shrouds (including the fox) again in v60.\nDisable this if you're having issues with other mods.");
-            FixFalseVainShroudRemoval = config.Bind<bool>(category, "FixFalseVainShroudRemoval", false, "In v60, if the Vain Shrouds fail to spawn they are reset completely,\nthis setting makes sure they aren't reset if they fail to spawn.");
+            FixFalseVainShroudRemoval = config.Bind<bool>(category, "FixFalseVainShroudRemoval", true, "In v60, if the Vain Shrouds fail to spawn they are reset completely,\nthis setting makes sure they aren't reset if they fail to spawn.");
 
             category = "Relocation";
             RelocateVainShroudSpawnPosition = config.Bind<bool>(category, "AllowStartRelocation", true, "Relocate the starting position of the Vain Shrouds when they're too close to the ship.\nIn v60 this setting is only useful if you're loading a save that already has Vain Shrouds on the ship.");
