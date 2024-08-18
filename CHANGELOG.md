@@ -1,3 +1,9 @@
+## v1.3.0
+* Added a feature to bring back the Vain Shrouds in v60 (Requested by [MiraakThuri](https://github.com/EssieFir/SoberShip/issues/2))
+* Added a feature to prevent the Vain Shrouds being reset when they fail to spawn.
+* Added an unfinished feature to cull Vain Shrouds if there are too many.
+* Updated config descriptions to describe what they do in v60 specifically.
+
 ## v1.2.2
 * Added the option to set the maximum amount of Vain Shrouds that can exist (defaults to false)
 
@@ -20,3 +26,6 @@
 
 ## v1.1.0
 * Now removes newly generated Vain Shrouds as well.
+
+## v1.0.0
+* Created the mod
