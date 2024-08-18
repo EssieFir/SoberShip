@@ -33,7 +33,7 @@ namespace SoberShip.Patches
             if (SoberShip.forceSpawnShrouds)
             {
                 moldIterations = 17;
-                moldStartPosition = 80;
+                moldStartPosition = 10;
             }
 
             if (ConfigOptions.FixFalseVainShroudRemoval.Value)
@@ -52,7 +52,7 @@ namespace SoberShip.Patches
             float minDistance = ConfigOptions.MinimumVainShroudStartDistanceFromShip.Value;
             Vector3 shipPos = StartOfRound.Instance.elevatorTransform.position;
 
-            if (moldStartPosition <= 0 || Vector3.Distance(__instance.outsideAINodes[moldStartPosition].transform.position, shipPos) < minDistance)
+            if (moldStartPosition <= 0 || (__instance.outsideAINodes.Length > moldStartPosition && Vector3.Distance(__instance.outsideAINodes[moldStartPosition].transform.position, shipPos) < minDistance))
             {
                 SoberShip.Logger.LogInfo(string.Format("Vain Shroud starting position is {0}, which is too close to the ship, looking for a new location...", moldStartPosition));
 
