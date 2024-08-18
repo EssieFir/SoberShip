@@ -17,6 +17,11 @@ namespace SoberShip.Patches
             if (patchSetPlanetsMoldTranspilerSuccess)
             {
                 if (!ConfigOptions.BringBackVainShrouds.Value) return false;
+                if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame)
+                {
+                    SoberShip.Logger.LogDebug("SetPlanetsMoldPrefix() called on a non-host client, skipping...");
+                    return false;
+                }
             }
             return true;
         }

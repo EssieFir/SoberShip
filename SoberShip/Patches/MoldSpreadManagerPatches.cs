@@ -11,7 +11,7 @@ namespace SoberShip.Patches
         public static bool ClearedExcessiveMold = false;
 
         [HarmonyPostfix]
-        private static void GenerateMoldPostFix(MoldSpreadManager __instance)
+        private static void GenerateMoldPostfix(MoldSpreadManager __instance)
         {
             if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame)
             {
@@ -20,6 +20,17 @@ namespace SoberShip.Patches
             }
 
             if (ConfigOptions.DisableVainShroudsCompletely.Value || (ConfigOptions.RemoveExcessiveVainShrouds.Value && ConfigOptions.MaximumVainShrouds.Value <= 0)) return;
+
+            if (ConfigOptions.FixFalseVainShroudRemoval.Value)
+            {
+                if (RoundManagerPatches.moldIterations > 0 && RoundManagerPatches.moldStartPosition > 0)
+                {
+                    StartOfRound.Instance.currentLevel.moldSpreadIterations = RoundManagerPatches.moldIterations;
+                    StartOfRound.Instance.currentLevel.moldStartPosition = RoundManagerPatches.moldStartPosition;
+                }
+            }
+
+            if (StartOfRound.Instance.currentLevel.moldSpreadIterations < 1 || StartOfRound.Instance.currentLevel.moldStartPosition < 0) return;
 
             if (ConfigOptions.RemoveExcessiveVainShrouds.Value)
             {

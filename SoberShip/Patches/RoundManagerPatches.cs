@@ -7,6 +7,10 @@ namespace SoberShip.Patches
     [HarmonyPatch(typeof(RoundManager), nameof(RoundManager.GenerateNewLevelClientRpc))]
     public class RoundManagerPatches
     {
+
+        public static int moldIterations = 0;
+        public static int moldStartPosition = -1;
+
         [HarmonyPrefix]
         private static void GenerateNewLevelClientRpcPreFix(RoundManager __instance, ref int moldIterations, ref int moldStartPosition)
         {
@@ -24,6 +28,15 @@ namespace SoberShip.Patches
                 moldStartPosition = -1;
                 SoberShip.Logger.LogDebug("Vain Shrouds disabled.");
                 return;
+            }
+
+            if (ConfigOptions.FixFalseVainShroudRemoval.Value)
+            {
+                if (moldIterations > 0 && moldStartPosition > 0)
+                {
+                    RoundManagerPatches.moldIterations = moldIterations;
+                    RoundManagerPatches.moldStartPosition = moldStartPosition;
+                }
             }
 
             if (!ConfigOptions.RelocateVainShroudSpawnPosition.Value) return;
