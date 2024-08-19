@@ -12,7 +12,7 @@ namespace SoberShip.Patches
         public static int moldStartPosition = -1;
 
         [HarmonyPrefix]
-        private static void GenerateNewLevelClientRpcPreFix(RoundManager __instance, ref int moldIterations, ref int moldStartPosition)
+        private static void GenerateNewLevelClientRpcPrefix(RoundManager __instance, ref int moldIterations, ref int moldStartPosition)
         {
             SoberShip.Logger.LogDebug(string.Format("GenerateNewClientLevelRpcPreFix() moldIterations : {0}; moldStartPosition : {1}", moldIterations, moldStartPosition));
 
