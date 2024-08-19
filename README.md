@@ -9,11 +9,11 @@ Also fixes old saves that still have Vain Shrouds on the ship.
 * Un-Disables the Vain Shrouds (enabled by default).
 * Relocates the Vain Shroud spawn position to somewhere away from the ship, if it's too close. (enabled by default)
 * Removes existing/spreading Vain Shrouds that are too close to the ship (enabled by default)
+* Cap Vain Shroud iterations (enabled by default)
 * The option to disable Vain Shrouds completely, which also disables the fox (disabled by default)
-* (broken, but kind of works) The option to cap the amount of Vain Shrouds that can exist (disabled by default)
 
 All features are configurable and can be tweaked or disabled.<br>
-This mod works with [Lethal Config](https://thunderstore.io/c/lethal-company/p/AinaVT/LethalConfig/) and does not require a restart to set any config options.<br>
+This mod works with [Lethal Config](https://thunderstore.io/c/lethal-company/p/AinaVT/LethalConfig/) and does not require a restart to apply any config changes.<br>
 Proper support for Lethal Config is planned.
 
 If you find a bug or have a suggestion feel free to open an issue on this mods [GitHub page](https://github.com/EssieFir/SoberShip/issues).
