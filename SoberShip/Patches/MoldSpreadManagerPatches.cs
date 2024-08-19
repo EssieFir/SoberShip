@@ -8,7 +8,6 @@ namespace SoberShip.Patches
     public class MoldSpreadManagerPatches
     {
         public static bool ClearedNearbyMold = false;
-        public static bool ClearedExcessiveMold = false;
 
         [HarmonyPostfix]
         private static void GenerateMoldPostfix(MoldSpreadManager __instance)

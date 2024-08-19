@@ -14,7 +14,6 @@ namespace SoberShip.Patches
             if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame) return;
 
             MoldSpreadManagerPatches.ClearedNearbyMold = false;
-            MoldSpreadManagerPatches.ClearedExcessiveMold = false;
         }
     }
 }
