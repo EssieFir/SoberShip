@@ -31,7 +31,7 @@ namespace SoberShip.Patches
                 }
             }
 
-            if (StartOfRound.Instance.currentLevel.moldSpreadIterations < 1 || StartOfRound.Instance.currentLevel.moldStartPosition < 0) return;
+            if (StartOfRound.Instance.currentLevel.moldSpreadIterations < 1) return;
 
             if (ConfigOptions.RemoveNearbyVainShrouds.Value)
             {
