@@ -11,7 +11,7 @@ namespace SoberShip.Patches
         public static bool ClearedExcessiveMold = false;
 
         [HarmonyPostfix]
-        private static void GenerateMoldPostFix(MoldSpreadManager __instance)
+        private static void GenerateMoldPostfix(MoldSpreadManager __instance)
         {
             if (GameNetworkManager.Instance == null || !GameNetworkManager.Instance.isHostingGame)
             {
@@ -21,10 +21,17 @@ namespace SoberShip.Patches
 
             if (ConfigOptions.DisableVainShroudsCompletely.Value || (ConfigOptions.RemoveExcessiveVainShrouds.Value && ConfigOptions.MaximumVainShrouds.Value <= 0)) return;
 
-            if (ConfigOptions.RemoveExcessiveVainShrouds.Value)
+            if (ConfigOptions.FixFalseVainShroudRemoval.Value)
             {
-                DestroyMoldUsingMax(__instance, ConfigOptions.MaximumVainShrouds.Value);
+                if (RoundManagerPatches.moldIterations > 0 && RoundManagerPatches.moldStartPosition > 0)
+                {
+                    SoberShip.Logger.LogDebug(string.Format("Loading Vain Shroud state... : iterations = {0}; startPosition = {1}", RoundManagerPatches.moldIterations, RoundManagerPatches.moldStartPosition));
+                    StartOfRound.Instance.currentLevel.moldSpreadIterations = RoundManagerPatches.moldIterations;
+                    StartOfRound.Instance.currentLevel.moldStartPosition = RoundManagerPatches.moldStartPosition;
+                }
             }
+
+            if (StartOfRound.Instance.currentLevel.moldSpreadIterations < 1) return;
 
             if (ConfigOptions.RemoveNearbyVainShrouds.Value)
             {
@@ -38,27 +45,6 @@ namespace SoberShip.Patches
                         return;
                 }
             }
-        }
-
-        private static void DestroyMoldUsingMax(MoldSpreadManager __instance, int maximum)
-        {
-            if (ClearedExcessiveMold) return;
-            if (__instance.moldContainer.childCount <= 0) return;
-            if (__instance.moldContainer.childCount <= maximum) return;
-
-            SoberShip.Logger.LogInfo(string.Format("There are over {0} Vain Shrouds! Culling...", maximum));
-
-            int amnt_to_remove = (__instance.moldContainer.childCount - maximum);
-            System.Random rnd_index = new System.Random();
-            for (int i = 0; i < amnt_to_remove; i++)
-            {
-                var mold = __instance.moldContainer.GetChild(rnd_index.Next(0, __instance.moldContainer.childCount - 1)).gameObject;
-                DestroyMold(false, __instance, mold);
-            }
-
-            SoberShip.Logger.LogInfo("Vain Shrouds have been culled.");
-
-            ClearedExcessiveMold = true;
         }
 
         private static void DestroyNearbyMold(MoldSpreadManager __instance, bool permanently = false)
